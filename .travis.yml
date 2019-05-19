@@ -5,3 +5,4 @@ script:
   - sudo bash deploy.sh
   - sudo echo "set data"
   - sudo bash set_data.sh
+  - sudo bash print_url.sh

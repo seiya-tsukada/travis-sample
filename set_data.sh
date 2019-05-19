@@ -1,5 +1,8 @@
 # /usr/bin/bash
 
+# wait elasticsearch
+sleep 10
+
 # get elasticsearch nodeport
 ES_NODEPORT=`curl http://${API_SERVER}/es/nodeport`
 
