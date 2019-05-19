@@ -15,7 +15,7 @@ echo ${ES_NODEPORT}
 # request kibana
 echo ${KUBE_WORKER}
 echo ${ES_NODEPORT}
-curl ${KUBE_WORKER}:${ES_NODEPORT}
+echo "curl ${KUBE_WORKER}:${ES_NODEPORT}"
 ANS = `curl ${KUBE_WORKER}:${ES_NODEPORT}`
 
 echo ${ANS}
