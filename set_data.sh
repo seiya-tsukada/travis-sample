@@ -88,6 +88,6 @@ curl -X PUT http://${KUBE_WORKER}:${ES_NODEPORT}/logstash-2015.05.20 \
 '
 
 # put data
-curl -H 'Content-Type: application/x-ndjson' -X POST ${KUBE_WORKER}:${ES_NODEPORT}/bank/account/_bulk?pretty --data-binary @./assets/accounts.json
-curl -H 'Content-Type: application/x-ndjson' -X POST ${KUBE_WORKER}:${ES_NODEPORT}/shakespeare/doc/_bulk?pretty --data-binary @./assets/shakespeare_6.0.json
-curl -H 'Content-Type: application/x-ndjson' -X POST ${KUBE_WORKER}:${ES_NODEPORT}/_bulk?pretty --data-binary @./assets/logs.jsonl
+curl -H 'Content-Type: application/x-ndjson' -X POST ${KUBE_WORKER}:${ES_NODEPORT}/bank/account/_bulk?pretty --data-binary @./assets/accounts.json > /dev/null
+curl -H 'Content-Type: application/x-ndjson' -X POST ${KUBE_WORKER}:${ES_NODEPORT}/shakespeare/doc/_bulk?pretty --data-binary @./assets/shakespeare_6.0.json > /dev/null
+curl -H 'Content-Type: application/x-ndjson' -X POST ${KUBE_WORKER}:${ES_NODEPORT}/_bulk?pretty --data-binary @./assets/logs.jsonl > /dev/null
