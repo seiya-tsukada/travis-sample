@@ -11,8 +11,7 @@ echo ${ES_NODEPORT}
 
 while true
 do
-  RES="curl -s -I ${KUBE_WORKER}:${ES_NODEPORT} head -1 | cut -d ' ' -f 2"
-  echo "${RES}"
+  RES=`curl -s -I ${KUBE_WORKER}:${ES_NODEPORT} head -1 | cut -d ' ' -f 2`
   if [ "${RES}" -eq 200 ]; then
     break
   fi
