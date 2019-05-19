@@ -1,8 +1,5 @@
 # /usr/bin/bash
 
-# wait elasticsearch
-sleep 10
-
 # get elasticsearch nodeport
 ES_NODEPORT=`curl http://${API_SERVER}/es/nodeport`
 
@@ -11,8 +8,17 @@ echo ${ES_NODEPORT}
 # request kibana
 echo ${KUBE_WORKER}
 echo ${ES_NODEPORT}
-echo "curl ${KUBE_WORKER}:${ES_NODEPORT}"
 
+while true
+do
+  RES="curl -s -I ${KUBE_WORKER}:${ES_NODEPORT} head -1 | cut -d ' ' -f 2"
+
+  if [ ${RES} == "200" ]; then
+    break
+  fi
+  
+  sleep 2
+done
 
 # set mapping
 curl -X PUT http://${KUBE_WORKER}:${ES_NODEPORT}/shakespeare \
@@ -49,7 +55,6 @@ curl -X PUT http://${KUBE_WORKER}:${ES_NODEPORT}/logstash-2015.05.18 \
   }
 }
 '
-
 
 curl -X PUT http://${KUBE_WORKER}:${ES_NODEPORT}/logstash-2015.05.19 \
 -H "Content-Type: application/json" -d '
@@ -94,3 +99,4 @@ curl -X PUT http://${KUBE_WORKER}:${ES_NODEPORT}/logstash-2015.05.20 \
 curl -H 'Content-Type: application/x-ndjson' -X POST ${KUBE_WORKER}:${ES_NODEPORT}/bank/account/_bulk?pretty --data-binary @./assets/accounts.json > /dev/null
 curl -H 'Content-Type: application/x-ndjson' -X POST ${KUBE_WORKER}:${ES_NODEPORT}/shakespeare/doc/_bulk?pretty --data-binary @./assets/shakespeare_6.0.json > /dev/null
 curl -H 'Content-Type: application/x-ndjson' -X POST ${KUBE_WORKER}:${ES_NODEPORT}/_bulk?pretty --data-binary @./assets/logs.jsonl > /dev/null
+
