@@ -3,8 +3,7 @@ env:
   global:
     - ='hogehoge'
 before_install:
-  - sudo echo "before_install"
-  - sudo echo ${API_SERVER}
+  - sudo echo "request to API Server: ${API_SERVER}"
 script:
-  - sudo echo "script"
+  - sudo echo "start script"
   - sudo bash deploy.sh

@@ -2,4 +2,5 @@
 
 set -x
 
-echo ${API_SERVER}
+# request
+curl http://${API_SERVER}
