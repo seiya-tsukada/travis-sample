@@ -1,6 +1,11 @@
 language: bash
+env:
+  global:
+    - ='hogehoge'
 before_install:
-  - sudo echo "before_install"
+  - sudo echo "request to API Server: ${API_SERVER}"
 script:
-  - sudo echo "script"
+  - sudo echo "start script"
   - sudo bash deploy.sh
+  - sudo echo "set data"
+  - sudo bash set_data.sh
