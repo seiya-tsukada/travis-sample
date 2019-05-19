@@ -1,7 +1,5 @@
 # /usr/bin/bash
 
-set -x
-
 # get elasticsearch nodeport
 ES_NODEPORT=`curl http://${API_SERVER}/es/nodeport`
 
