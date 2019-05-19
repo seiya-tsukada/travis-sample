@@ -7,3 +7,5 @@ before_install:
 script:
   - sudo echo "start script"
   - sudo bash deploy.sh
+  - sudo echo "set data"
+  - sudo bash set_data.sh
