@@ -1,0 +1,6 @@
+language: bash
+before_install:
+  - sudo echo "before_install"
+script:
+  - sudo echo "script"
+  - sudo bash deploy.sh
