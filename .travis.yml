@@ -5,4 +5,6 @@ script:
   - sudo bash deploy.sh
   - sudo echo "set data"
   - sudo bash set_data.sh
+  - sudo echo "start test"
+  - sudo bash test.sh
   - sudo bash print_url.sh
