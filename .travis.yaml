@@ -1,0 +1,10 @@
+language: bash
+env:
+  global:
+    - ='hogehoge'
+before_install:
+  - sudo echo "before_install"
+  - sudo echo ${API_SERVER}
+script:
+  - sudo echo "script"
+  - sudo bash deploy.sh

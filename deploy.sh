@@ -2,4 +2,4 @@
 
 set -x
 
-echo "execute script"
+echo ${API_SERVER}
